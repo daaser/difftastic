@@ -313,8 +313,8 @@ pub(crate) fn novel_style(style: Style, side: Side, background: BackgroundColor)
         }
     } else {
         match side {
-            Side::Left => style.red(),
-            Side::Right => style.green(),
+            Side::Left => style.fg_rgb::<242, 32, 31>(),
+            Side::Right => style.fg_rgb::<25, 203, 0>(),
         }
     }
 }
