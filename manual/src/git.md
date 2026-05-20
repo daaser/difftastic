@@ -3,14 +3,11 @@
 Difftastic can be used an external diff command in git, allowing
 difftastic to be used with any git subcommand.
 
-<div class="warning">
-
-Warning: git v2.43.1 and earlier [can
-crash](https://github.com/git/git/commit/85a9a63c9268b18b24f25f6a14d6ae9966c3566d)
-when using an external diff and file permissions have changed.
-
-If you can't upgrade git, use the `difftool` configuration described
-below.
+> [!WARNING]
+> git v2.43.1 and earlier [can
+crash](https://github.com/git/git/commit/85a9a63c9268b18b24f25f6a14d6ae9966c3566d) when using an external diff and file permissions have changed.
+>
+> If you can't upgrade git, use the `difftool` configuration described below.
 
 </div>
 
@@ -49,7 +46,8 @@ so you can use difftastic more easily.
 
 ```ini
 [alias]
-    # Difftastic aliases, so `git dlog` is `git log` with difftastic and so on.
+    # Difftastic aliases, so `git dlog -p` is `git log -p`
+    # with difftastic and likewise for the other subcommands.
     dlog = -c diff.external=difft log --ext-diff
     dshow = -c diff.external=difft show --ext-diff
     ddiff = -c diff.external=difft diff
