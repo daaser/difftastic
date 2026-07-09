@@ -74,7 +74,7 @@ pub(crate) struct SyntaxInfo<'a> {
     content_id: Cell<ContentId>,
     /// Is this the only node with this content? Ignores nodes on the
     /// other side.
-    content_is_unique: Cell<bool>,
+    content_is_unique_to_side: Cell<bool>,
 }
 
 impl<'a> SyntaxInfo<'a> {
@@ -88,7 +88,7 @@ impl<'a> SyntaxInfo<'a> {
             num_after: Cell::new(0),
             unique_id: Cell::new(NonZeroU32::new(u32::MAX).unwrap()),
             content_id: Cell::new(0),
-            content_is_unique: Cell::new(false),
+            content_is_unique_to_side: Cell::new(false),
         }
     }
 }
@@ -305,7 +305,7 @@ impl<'a> Syntax<'a> {
     }
 
     pub(crate) fn content_is_unique(&self) -> bool {
-        self.info().content_is_unique.get()
+        self.info().content_is_unique_to_side.get()
     }
 
     pub(crate) fn num_ancestors(&self) -> u32 {
@@ -529,7 +529,7 @@ fn set_content_is_unique_from_counts(nodes: &[&Syntax], counts: &DftHashMap<Cont
         let count = counts
             .get(&node.content_id())
             .expect("Count should be present");
-        node.info().content_is_unique.set(*count == 1);
+        node.info().content_is_unique_to_side.set(*count == 1);
 
         if let List { children, .. } = node {
             set_content_is_unique_from_counts(children, counts);
@@ -627,14 +627,25 @@ pub(crate) enum AtomKind {
     // TODO: We should either have a AtomWithWords(HighlightKind) or a
     // separate String, Text and Comment kind.
     String(StringKind),
+    /// Diffed the same as `Normal` but highlighted differently during
+    /// display.
     Type,
-    Comment,
+    /// Diffed the same as `Normal` but highlighted differently during
+    /// display.
     Keyword,
+    Comment,
     TreeSitterError,
-    /// Trailing commas can be ignored in some positions, such as the
-    /// last comma in `[1, 2,]` in JS. However, it's not obligatory,
-    /// and it's useful when diffing `[1,]` against `[1, 2]` to be
-    /// able to match up the commas.
+    /// Trailing punctuation atoms, especially commas, can be ignored
+    /// when there are no other changes.
+    ///
+    /// For example, in JS, we want to consider `[1]` and `[1,]` to be
+    /// same. Syntax node equality treats lists that only differ by
+    /// CanIgnore as equal.
+    ///
+    /// Note that diffing still sees these trailing atoms. If we're
+    /// diffing `[]` and `[1,]` we want to ensure that `,` is
+    /// highlighted as novel, and discarding trailing commas entirely
+    /// would prevent that.
     CanIgnore,
 }
 

@@ -82,6 +82,9 @@ sample_files/erlang_1.erl sample_files/erlang_2.erl
 sample_files/f_sharp_1.fs sample_files/f_sharp_2.fs
 63defe290bfc6754b51457a6c374838b  -
 
+sample_files/fish_1.fish sample_files/fish_2.fish
+707c9e00520b380813342c33a9d0f2d3  -
+
 sample_files/fortran_1.f90 sample_files/fortran_2.f90
 b5fae2c0a3e0755ca8182df1f728400b  -
 
@@ -244,9 +247,6 @@ sample_files/scheme_1.scm sample_files/scheme_2.scm
 sample_files/simple_1.js sample_files/simple_2.js
 f73ae56c0467bac101bb5f7a435f89f3  -
 
-sample_files/simple_1.scss sample_files/simple_2.scss
-8479280a4782aabf42acf4bb7d3668c5  -
-
 sample_files/simple_1.txt sample_files/simple_2.txt
 b0a13567bfdd36c854d9d2f537c704de  -
 
@@ -293,7 +293,7 @@ sample_files/todomvc_1.gleam sample_files/todomvc_2.gleam
 725bb793f219e13cee199f18ffaed872  -
 
 sample_files/toml_1.toml sample_files/toml_2.toml
-e1002ceba14d973fcc8abc23619e65b0  -
+061ffdc7a60051a1185b742672b1050a  -
 
 sample_files/trailing_commas_1.js sample_files/trailing_commas_2.js
 9ca72e199466c75f85d00f4d521e85ff  -
