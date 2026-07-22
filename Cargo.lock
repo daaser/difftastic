@@ -113,9 +113,9 @@ dependencies = [
 
 [[package]]
 name = "bumpalo"
-version = "3.16.0"
+version = "3.20.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "79296716171880943b8470b5f8d03aa55eb2e645a4874bdbb28adb49162e012c"
+checksum = "72f5acc6cb2ba439de613abc23857ec3d78374d8ed5ac84e9d11336e87da8649"
 
 [[package]]
 name = "cc"
@@ -287,7 +287,7 @@ dependencies = [
  "tree-sitter-haskell",
  "tree-sitter-hcl",
  "tree-sitter-html",
- "tree-sitter-java",
+ "tree-sitter-java-orchard",
  "tree-sitter-javascript",
  "tree-sitter-json",
  "tree-sitter-julia",
@@ -574,9 +574,9 @@ checksum = "90ed8c1e510134f979dbc4f070f87d4313098b704861a105fe34231c70a3901c"
 
 [[package]]
 name = "memchr"
-version = "2.7.1"
+version = "2.8.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "523dc4f511e55ab87b694dc30d0f820d60906ef06413f93d4d7a1385599cc149"
+checksum = "cf8baf1c55e62ffcace7a9f06f4bd9cd3f0c4beb022d3b367256b91b87513d98"
 
 [[package]]
 name = "mio"
@@ -1263,10 +1263,10 @@ dependencies = [
 ]
 
 [[package]]
-name = "tree-sitter-java"
-version = "0.23.4"
+name = "tree-sitter-java-orchard"
+version = "0.5.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "6f9b24494d5f386acb2c086e0541c1b145692e0e012101ddb8257737b83c2803"
+checksum = "660a7a7660bab0969c9f46faa2274fad4cad48c087ab66d8697d4f94d80f19b7"
 dependencies = [
  "cc",
  "tree-sitter-language",
